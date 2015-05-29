@@ -1,0 +1,38 @@
+<ion-view title="Spot Booking">
+
+	<ion-content has-header="true" padding="true">
+	
+	<label class="input-label">
+      Rent a Spot for:
+    </label>
+
+	<div class="list">
+
+  <label class="item item-input item-select">
+    <div class="input-label">
+      Time
+    </div>
+    <select>
+      <option>1 hr</option>
+      <option selected>2 hr</option>
+      <option>3 hr</option>
+    </select>
+  </label>
+
+</div>
+		<label class="item item-input">
+              <input type="text" placeholder="License Plate No. ex:1234Hey" ng-model="license">
+    </label>
+
+	<label>	License is {{license}}</label> 
+	  <label class="input-label">NOTE:</label><label> You may be Towed with incorrect License plate</label> 
+<br/>
+<br/>
+	<ul class="list">
+		<ion-item>
+        <a  href="#/tab/dash">Checkout Now</a>
+    	</ion-item>
+    </ul>
+<br/>
+  	</ion-content>
+</ion-view>
