@@ -6,7 +6,7 @@
 -->
 <ion-view view-title="Spot AT {{spot.address1}}">
   <ion-content class="padding">
-    <img ng-src="img/{{spot.img}}" style="width: 250px; height: 250px" align="center">
+    <img ng-src="{{spot.image}}" style="width: 250px; height: 250px" align="center">
     <p>
       <label>Address Street </label>{{spot.address1}}</p><p>
        {{spot.address2}}</p><p>
@@ -17,7 +17,7 @@
          <label>Spot Size:</label>{{spot.carSize}}
     </p>
     <ul class="list">
-      <a href="#/spot-booking" class="item">Book Spot</a>
+      <a href="#/spot-booking/{{spot.spotId}}" class="item">Book Spot</a>
     </ul>
     </ion-content>
   </ion-content>

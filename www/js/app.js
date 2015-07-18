@@ -53,7 +53,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       views: {
         'tab-spots': {
           templateUrl: 'templates/tab-spots.html',
-          controller: 'SpotsCtrl'
+          controller: 'getSpotsCtrl'
         }
       }
     })
@@ -67,9 +67,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
     .state('spot-booking', {
-                url: '/spot-booking',
+                url: '/spot-booking/:spotId',
                 templateUrl: 'templates/spot-booking.html',
-                controller: 'SpotDetailCtrl'
+                controller: 'userPostCtrl'
             })
 /*
 .state('spot-booking', {

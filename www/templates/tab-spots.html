@@ -2,11 +2,14 @@
   <ion-content>
     <ion-list>
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="spot in spots" type="item-text-wrap" href="#/tab/spots/{{spot.spotId}}">
-        <img ng-src="img/{{spot.img}}">
+        <img ng-src="{{spot.image}}">
         <h2>{{spot.address1}}</h2>
         <p>{{spot.city}}</p>
-        <i class="icon ion-chevron-right icon-accessory"></i>
-
+      </ion-item>
+      <ion-item type="item-text-wrap" ng-show="!spots.length">
+          <h2>PARKING LOT IS FULL!</h2>
+          <p>We will get back with more spots soon..</p><br/><p> Keep checking!</p>
+          <br/><p>- FlashPark Team</p>
       </ion-item>
     </ion-list>
   </ion-content>

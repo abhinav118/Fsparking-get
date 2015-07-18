@@ -1,6 +1,6 @@
 <ion-view title="Spot Booking">
 
-	<ion-content has-header="true" padding="true">
+	<!-- <ion-content has-header="true" padding="true">
 	
 	<label class="input-label">
       Rent a Spot for:
@@ -34,5 +34,56 @@
     	</ion-item>
     </ul>
 <br/>
-  	</ion-content>
+  	</ion-content> -->
+        <ion-content>
+          <form class="list" ng-show="showForm">
+            <br/>
+            <div class="item item-divider">
+              User SignUp
+            </div>
+            <label class="item item-input">
+              <input type="text" placeholder="First Name" ng-model="User.firstName">
+            </label>
+            <label class="item item-input">
+              <input type="text" placeholder="Last Name" ng-model="User.lastName">
+            </label>
+            <label class="item item-input">
+              <input type="text" placeholder="email" ng-model="User.email">
+            </label>
+            <label class="item item-input">
+              <input type="text" placeholder="phone" ng-model="User.phone">
+            </label>
+            
+            <div class="item item-divider">
+              Spot Information
+            </div>
+            <label class="input-label">
+      Rent a Spot for:
+    </label>
+
+  <div class="list">
+
+  <label class="item item-input item-select">
+    <div class="input-label">
+      Time
+    </div>
+    <select ng-model="User.spotTime" convert-to-number>
+      <option selected                            value="1">1 hr</option>
+      <option value="2">2 hrs</option>
+      <option value="3">3 hrs</option>
+    </select>
+  </label>
+
+  </div>
+   <label class="item item-input">Spot Id:{{spot.spotId}}</label>
+
+ 
+            <div class="padding">
+              <!-- <a href="maps:ll=38.897096,-77.036545">open map</a> -->
+              <button class="button black button-block" ng-click="submit()" href="maps:ll=38.897096,-77.036545">Submit</button>
+            </div>
+          </form>
+
+        </ion-content>
+     
 </ion-view>
