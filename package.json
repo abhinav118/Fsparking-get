@@ -18,10 +18,22 @@
   "cordovaPlugins": [
     "org.apache.cordova.console",
     "com.ionic.keyboard",
-    "org.apache.cordova.device"
+    "org.apache.cordova.device",
+    {
+      "locator": "https://github.com/phonegap-build/PushPlugin.git",
+      "id": "com.phonegap.plugins.PushPlugin"
+    },
+    {
+      "locator": "https://github.com/driftyco/ionic-plugins-deploy",
+      "id": "com.ionic.deploy"
+    }
   ],
   "cordovaPlatforms": [
-    "ios"
+    "ios",
+    {
+      "platform": "android",
+      "locator": "browser"
+    }
   ],
   "scripts": {
     "start": "node server.js"

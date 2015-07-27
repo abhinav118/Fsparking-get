@@ -1,3 +1,4 @@
+
 // Ionic Starter App
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
@@ -5,7 +6,13 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', [
+  'ionic',
+  'ionic.service.core',
+  'ionic.service.deploy',
+  'starter.controllers',
+  'starter.services'
+])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -20,6 +27,19 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   });
 })
+
+
+.config(['$ionicAppProvider', function($ionicAppProvider) {
+  // Identify app
+  $ionicAppProvider.identify({
+    // The App ID (from apps.ionic.io) for the server
+    app_id: '124f2d59',
+    // The public API key all services will use for this app
+    api_key: '9e34a32f1e350b4556c0031892df23215d5fdf37eb502115',
+    // Set the app to use development pushes
+    dev_push: true
+  });
+}])
 
 .config(function($stateProvider, $urlRouterProvider) {
 
