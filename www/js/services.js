@@ -48,7 +48,7 @@ var spots1=[{"spotId":1,"address1":"2 Townsend St","address2":"Apt 1803","city":
                 //return $http.get('http://ec2-52-8-236-47.us-west-1.compute.amazonaws.com:8080/sparking/spot/getAllSpots')
               // return spots1;   
 
-return $http.jsonp('http://ec2-52-8-236-47.us-west-1.compute.amazonaws.com:8080/sparking/spot/getAllSpots?callback=JSON_CALLBACK')
+return $http.jsonp('http://localhost:8080/sparking/spot/getAllSpots?callback=JSON_CALLBACK')
                     .then(function(response) {
                         if (typeof response.data === 'object') {
                             spots= eval(JSON.stringify(response.data));
@@ -122,8 +122,7 @@ return $http.jsonp('http://ec2-52-8-236-47.us-west-1.compute.amazonaws.com:8080/
     },
     get: function(spotId) {
       //getSpots();
-      alert(spotId);
-
+      
       for (var i = 0; i < spots.length; i++) {
         if (spots[i].spotId === parseInt(spotId)) {
           return spots[i];

@@ -25,6 +25,32 @@ angular.module('starter', [
       // org.apache.cordova.statusbar required
       StatusBar.styleLightContent();
     }
+
+  ionic.Platform.ready(function(){
+   console.log("device ready");
+   var isIOS = ionic.Platform.isIOS();
+    var deviceInformation = ionic.Platform.device();
+
+  var isWebView = ionic.Platform.isWebView();
+  var isIPad = ionic.Platform.isIPad();
+  var isIOS = ionic.Platform.isIOS();
+  var isAndroid = ionic.Platform.isAndroid();
+  var isWindowsPhone = ionic.Platform.isWindowsPhone();
+
+  var currentPlatform = ionic.Platform.platform();
+  var currentPlatformVersion = ionic.Platform.version();
+
+   console.log("is iOS"+isIOS);
+   console.log("is android"+isAndroid);
+   console.log("is deviceInformation"+deviceInformation);
+    
+   console.log("is isWindowsPhone"+isWindowsPhone);
+   
+console.log("is currentPlatform"+currentPlatform);
+   console.log("is currentPlatformVersion"+currentPlatformVersion);
+   
+  })
+
   });
 })
 
@@ -41,8 +67,11 @@ angular.module('starter', [
   });
 }])
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
+$httpProvider.defaults.useXDomain = true;
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
+   
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
   // Set up the various states which the app can be in.
@@ -113,5 +142,5 @@ angular.module('starter', [
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/spots');
-
 });
+

@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['ionic'])
+angular.module('starter.controllers', ['ionic','ngCordova'])
 
 .controller('DashCtrl', function($scope) {})
 /*{
@@ -30,6 +30,9 @@ angular.module('starter.controllers', ['ionic'])
                     $scope.spots = data;
 
                 });
+
+
+
 // Spots.all().then(function(data) {
 //                     // promise fulfilled
 //                     //alert("data:"+eval(data));
@@ -136,7 +139,7 @@ $scope.Spots=result;
 
 })
 
-.controller('userPostCtrl' ,  function($scope ,$http, $stateParams, Spots,$state){
+.controller('userPostCtrl' ,  function($scope ,$http, $stateParams, Spots,$state, $location){
  $scope.showForm = true;
   $scope.spot = Spots.get($stateParams.spotId);
   console.log('Trying POST');
@@ -147,14 +150,28 @@ $scope.Spots=result;
       alert('Info required name is'+ $scope.User.firstName);
       return;
     }
+    if(!$scope.User.lastName) {
+      alert('Info required name is'+ $scope.User.lastName);
+      return;
+    }
+    if(!$scope.User.email) {
+      alert('Info required name is'+ $scope.User.email);
+      return;
+    }
+    if(!$scope.User.phone) {
+      alert('Info required name is'+ $scope.User.phone);
+      return;
+    }
 
     $scope.User.spotId=$stateParams.spotId;
     
     var request = $http({
-            method: 'post',
-            url: 'http://ec2-52-8-236-47.us-west-1.compute.amazonaws.com:8080/sparking/spot/saveUser',
+            method: 'POST',
+            url: 'http://localhost:8080/sparking/spot/saveUser',
+            //url: 'http://ec2-52-8-236-47.us-west-1.compute.amazonaws.com:8080/sparking/spot/saveUser',
             data: JSON.stringify($scope.User),
-            headers : {"Content-Type": 'application/json'}
+            withCredentials: true,
+            headers : {'Content-Type': 'application/json;charset=UTF-8' }
 
         }).success(function (data, status, headers, config) {
             console.log("Success",data);
@@ -163,7 +180,30 @@ $scope.Spots=result;
         });
 
     console.log('----------Trying USER POST----------Data:'+JSON.stringify($scope.User)+"request:"+eval(request));
-    window.location = "maps:daddr=2126+Madera+Way+Mountain+View";
+  
+
+  var location="templates/tab-dash.html";
+
+  ionic.Platform.ready(function(){
+   console.log("device  is ready");
+   var isIOS = ionic.Platform.isIOS();
+   var isAndroid = ionic.Platform.isAndroid();
+   
+    console.log("is iOS"+isIOS);
+   console.log("is android"+isAndroid);
+
+if (isIOS) {
+  location = 'maps:daddr=2126+Madera+Way+Mountain+View';
+} else if (isAndroid) {
+  location = 'geo:0,0?q=2126+Madera+Way+Mountain+View';
+}
+window.location = location;
+
+$location.path("/dash");
+  
+ })
+
+    
 
 }
 })

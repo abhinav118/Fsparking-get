@@ -67,8 +67,8 @@
     <div class="input-label">
       Time
     </div>
-    <select ng-model="User.spotTime" convert-to-number>
-      <option selected                            value="1">1 hr</option>
+    <select ng-init="User.spotTime = 1" ng-model="User.spotTime" convert-to-number >
+      <option selected="selected" value="1" >1 hr</option>
       <option value="2">2 hrs</option>
       <option value="3">3 hrs</option>
     </select>
@@ -80,7 +80,7 @@
  
             <div class="padding">
               <!-- <a href="maps:ll=38.897096,-77.036545">open map</a> -->
-              <button class="button black button-block" ng-click="submit()" href="maps:ll=38.897096,-77.036545">Submit</button>
+              <button class="button button-positive" ng-click="submit()">Submit</button>
             </div>
           </form>
 
